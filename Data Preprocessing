@@ -1,0 +1,41 @@
+1. Data Preprocessing
+Overview
+Dataset Selection: For this example, we use a publicly available dataset such as the CoNLL-2003 NER dataset or one provided via SpaCy.
+Exploratory Data Analysis (EDA):
+• Load the dataset and inspect sample sentences and entity labels.
+• Check for class imbalances and overall statistics (number of tokens, entities per sentence, etc.).
+Preprocessing Steps:
+• Lowercase the text and remove stopwords using libraries like NLTK or SpaCy.
+• Perform lemmatization to reduce words to their base forms.
+• Tokenize the text and align tokens with the entity labels.
+Formatting:
+• Convert your data into a format expected by your chosen NLP framework. For example, if using SpaCy, format the training examples as tuples of text and annotations.
+Sample Code Snippet
+python
+Copy
+Edit
+import spacy
+from spacy.tokens import DocBin
+import nltk
+from nltk.corpus import stopwords
+
+# Ensure NLTK data is downloaded (run once)
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+# Load your dataset (assuming a structured format like JSON or CSV)
+# Example: preprocess each sentence
+def preprocess_text(text):
+    # Lowercase the text
+    text = text.lower()
+    # Tokenize (you can also use SpaCy's tokenizer)
+    tokens = text.split()
+    # Remove stopwords
+    tokens = [token for token in tokens if token not in stop_words]
+    return " ".join(tokens)
+
+# Example usage with a sample sentence:
+sample_text = "Apple is looking at buying U.K. startup for $1 billion."
+preprocessed_text = preprocess_text(sample_text)
+print(preprocessed_text)
+Data Preprocessing
